@@ -3,7 +3,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 from datetime import datetime, timedelta
 from functools import wraps
-
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.models.user import db, User, UserRole
 
 auth_bp = Blueprint('auth', __name__)
