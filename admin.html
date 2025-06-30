@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPS HR Consulting - Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #ff6b00;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        .main-sidebar {
+            background-color: var(--dark-color);
+        }
+        
+        .brand-link {
+            border-bottom: 1px solid #4b545c;
+        }
+        
+        .brand-link img {
+            opacity: .8;
+        }
+        
+        .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active {
+            background-color: var(--primary-color);
+        }
+        
+        .card-primary.card-outline {
+            border-top: 3px solid var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+        }
+        
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .custom-control-input:checked~.custom-control-label::before {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .dashboard-summary .small-box {
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .dashboard-summary .small-box .icon {
+            font-size: 70px;
+            opacity: 0.2;
+        }
+        
+        .dashboard-summary .small-box:hover .icon {
+            opacity: 0.3;
+        }
+        
+        .dashboard-summary .small-box h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .dashboard-summary .small-box p {
+            font-size: 1.1rem;
+        }
+        
+        .dashboard-chart {
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .recent-activity .timeline {
+            margin-top: 15px;
+            padding-left: 10px;
+        }
+        
+        .recent-activity .timeline>div>.timeline-item {
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        
+        .user-panel img {
+            height: 2.1rem;
+            width: 2.1rem;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/" class="nav-link">Trang chủ</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/jobs" class="nav-link">Việc làm</a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge">15</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">15 Thông báo</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-user-plus mr-2"></i> 5 ứng viên mới
+                            <span class="float-right text-muted text-sm">3 phút</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-calendar-check mr-2"></i> 3 cuộc phỏng vấn hôm nay
+                            <span class="float-right text-muted text-sm">12 giờ</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file-alt mr-2"></i> 7 báo cáo mới
+                            <span class="float-right text-muted text-sm">2 ngày</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">Xem tất cả thông báo</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-user mr-2"></i> Hồ sơ
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog mr-2"></i> Cài đặt
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Đăng xuất
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="/admin" class="brand-link">
+                <img src="/assets/mps-logo-white.png" alt="MPS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">MPS HR Admin</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="/assets/user-avatar.jpg" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Nguyễn Văn Admin</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="/admin" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Ứng viên
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/candidates" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách ứng viên</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/candidates/add" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm ứng viên mới</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>
+                                    Khách hàng
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/clients" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách khách hàng</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/clients/add" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm khách hàng mới</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-briefcase"></i>
+                                <p>
+                                    Việc làm
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/jobs" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Danh sách việc làm</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/jobs/add" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Thêm việc làm mới</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-file-alt"></i>
+                                <p>
+                                    Đơn ứng tuyển
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/applications" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tất cả đơn ứng tuyển</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/applications/pending" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Đơn đang xử lý</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/interviews" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <p>Lịch phỏng vấn</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/partners" class="nav-link">
+                                <i class="nav-icon fas fa-handshake"></i>
+                                <p>Đối tác</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/analytics" class="nav-link">
+                                <i class="nav-icon fas fa-chart-bar"></i>
+                                <p>Báo cáo & Phân tích</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/users" class="nav-link">
+                                <i class="nav-icon fas fa-user-cog"></i>
+                                <p>Quản lý người dùng</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/settings" class="nav-link">
+                                <i class="nav-icon fas fa-cog"></i>
+                                <p>Cài đặt hệ thống</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Dashboard</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Dashboard Summary -->
+                    <div class="row dashboard-summary">
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>150</h3>
+                                    <p>Ứng viên đang hoạt động</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <a href="/admin/candidates" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>53</h3>
+                                    <p>Vị trí đang tuyển</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <a href="/admin/jobs" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>44</h3>
+                                    <p>Đơn ứng tuyển mới</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <a href="/admin/applications" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>12</h3>
+                                    <p>Phỏng vấn hôm nay</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <a href="/admin/interviews" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-7 connectedSortable">
+                            <!-- Recruitment Funnel -->
+                            <div class="card dashboard-chart">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i class="fas fa-filter mr-1"></i>
+                                        Phễu tuyển dụng
+                                    </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <canvas id="funnelChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card -->
+
+                            <!-- Recent Activity -->
+                            <div class="card recent-activity">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i class="fas fa-history mr-1"></i>
+                                        Hoạt động gần đây
+                                    </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="timeline">
+                                        <!-- timeline item -->
+                                        <div>
+                                            <i class="fas fa-user bg-info"></i>
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="fas fa-clock"></i> 5 phút trước</span>
+                                                <h3 class="timeline-header"><a href="#">Nguyễn Văn A</a> đã thêm ứng viên mới</h3>
+                                                <div class="timeline-body">
+                                                    Ứng viên Trần Thị B đã được thêm vào hệ thống cho vị trí Kỹ sư Điện tử.
+                                                </div>
+                                                <div class="timeline-footer">
+                                                    <a href="#" class="btn btn-primary btn-sm">Xem chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END timeline item -->
+                                        <!-- timeline item -->
+                                        <div>
+                                            <i class="fas fa-calendar bg-warning"></i>
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="fas fa-clock"></i> 27 phút trước</span>
+                                                <h3 class="timeline-header"><a href="#">Trần Văn C</a> đã lên lịch phỏng vấn</h3>
+                                                <div class="timeline-body">
+                                                    Phỏng vấn với ứng viên Lê Thị D cho vị trí Quản lý Sản xuất vào lúc 14:00 ngày 02/07/2025.
+                                                </div>
+                                                <div class="timeline-footer">
+                                                    <a href="#" class="btn btn-warning btn-sm">Xem lịch</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END timeline item -->
+                                        <!-- timeline item -->
+                                        <div>
+                                            <i class="fas fa-check bg-success"></i>
+                                            <div class="timeline-item">
+                                                <span class="time"><i class="fas fa-clock"></i> 2 giờ trước</span>
+                                                <h3 class="timeline-header"><a href="#">Phạm Văn E</a> đã hoàn thành phỏng vấn</h3>
+                                                <div class="timeline-body">
+                                                    Phỏng vấn với ứng viên Hoàng Văn F cho vị trí Kỹ thuật viên đã hoàn thành với đánh giá tích cực.
+                                                </div>
+                                                <div class="timeline-footer">
+                                                    <a href="#" class="btn btn-success btn-sm">Xem đánh giá</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- END timeline item -->
+                                    </div>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="/admin/activities" class="btn btn-sm btn-secondary">Xem tất cả hoạt động</a>
+                                </div>
+                            </div>
+                            <!-- /.card -->
+                        </section>
+                        <!-- /.Left col -->
+
+                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                        <section class="col-lg-5 connectedSortable">
+                            <!-- Time to Hire -->
+                            <div class="card dashboard-chart">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        Thời gian tuyển dụng
+                                    </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <canvas id="timeToHireChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card -->
+
+                            <!-- Upcoming Interviews -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i class="fas fa-calendar-check mr-1"></i>
+                                        Lịch phỏng vấn sắp tới
+                                    </h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h5 class="mb-1">Nguyễn Văn X</h5>
+                                                    <p class="mb-0 text-muted">Kỹ sư Phần mềm</p>
+                                                </div>
+                                                <div class="text-right">
+                                                    <span class="badge bg-primary">Hôm nay, 10:00</span>
+                                                    <p class="mb-0 text-muted">Phỏng vấn trực tuyến</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h5 class="mb-1">Trần Thị Y</h5>
+                                                    <p class="mb-0 text-muted">Quản lý Nhân sự</p>
+                                                </div>
+                                                <div class="text-right">
+                                                    <span class="badge bg-primary">Hôm nay, 14:30</span>
+                                                    <p class="mb-0 text-muted">Phỏng vấn trực tiếp</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h5 class="mb-1">Lê Văn Z</h5>
+                                                    <p class="mb-0 text-muted">Kỹ thuật viên Điện tử</p>
+                                                </div>
+                                                <div class="text-right">
+                                                    <span class="badge bg-secondary">Ngày mai, 09:00</span>
+                                                    <p class="mb-0 text-muted">Phỏng vấn trực tiếp</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="/admin/interviews" class="btn btn-sm btn-secondary">Xem tất cả lịch phỏng vấn</a>
+                                </div>
+                            </div>
+                            <!-- /.card -->
+                        </section>
+                        <!-- right col -->
+                    </div>
+                    <!-- /.row (main row) -->
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2025 <a href="https://mps.net.vn">MPS HR Consulting</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 1.0.0
+            </div>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <!-- ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        // Recruitment Funnel Chart
+        const funnelCtx = document.getElementById('funnelChart').getContext('2d');
+        const funnelChart = new Chart(funnelCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Ứng tuyển', 'Sơ vấn', 'Phỏng vấn', 'Shortlist', 'Đánh giá KH', 'Tuyển dụng'],
+                datasets: [{
+                    label: 'Số lượng ứng viên',
+                    data: [120, 85, 60, 40, 25, 15],
+                    backgroundColor: [
+                        'rgba(0, 123, 255, 0.8)',
+                        'rgba(0, 123, 255, 0.7)',
+                        'rgba(0, 123, 255, 0.6)',
+                        'rgba(0, 123, 255, 0.5)',
+                        'rgba(0, 123, 255, 0.4)',
+                        'rgba(0, 123, 255, 0.3)'
+                    ],
+                    borderColor: [
+                        'rgba(0, 123, 255, 1)',
+                        'rgba(0, 123, 255, 1)',
+                        'rgba(0, 123, 255, 1)',
+                        'rgba(0, 123, 255, 1)',
+                        'rgba(0, 123, 255, 1)',
+                        'rgba(0, 123, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Time to Hire Chart
+        const timeToHireCtx = document.getElementById('timeToHireChart').getContext('2d');
+        const timeToHireChart = new Chart(timeToHireCtx, {
+            type: 'line',
+            data: {
+                labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6'],
+                datasets: [{
+                    label: 'Thời gian tuyển dụng (ngày)',
+                    data: [35, 32, 28, 25, 23, 20],
+                    fill: false,
+                    borderColor: 'rgba(255, 107, 0, 1)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

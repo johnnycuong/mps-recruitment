@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPS HR Consulting - Tìm kiếm việc làm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #ff6b00;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand img {
+            height: 40px;
+        }
+        
+        .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.9)), url('/assets/jobs-header.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .search-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .job-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .job-card .job-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .job-card .company-name {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .job-card .job-meta {
+            margin: 15px 0;
+            color: #6c757d;
+        }
+        
+        .job-card .job-meta i {
+            width: 20px;
+            text-align: center;
+            margin-right: 5px;
+        }
+        
+        .job-card .job-tags {
+            margin-top: 15px;
+        }
+        
+        .job-card .job-tags .badge {
+            margin-right: 5px;
+            padding: 5px 10px;
+            font-weight: 500;
+            background-color: #e9ecef;
+            color: #495057;
+        }
+        
+        .job-card .job-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .filter-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-card h5 {
+            color: var(--dark-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .filter-card .form-check {
+            margin-bottom: 10px;
+        }
+        
+        .pagination .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .pagination .page-link {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-links h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/assets/mps-logo.png" alt="MPS Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Về chúng tôi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/services">Dịch vụ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/jobs">Việc làm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-3" href="/admin">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="fw-bold">Tìm kiếm việc làm</h1>
+                    <p class="lead">Khám phá các cơ hội việc làm hấp dẫn tại các doanh nghiệp FDI hàng đầu tại Việt Nam</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Box -->
+    <section class="container">
+        <div class="search-box">
+            <form id="job-search-form">
+                <div class="row g-3">
+                    <div class="col-lg-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="keyword" placeholder="Từ khóa">
+                            <label for="keyword">Từ khóa (chức danh, kỹ năng...)</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-floating">
+                            <select class="form-select" id="location">
+                                <option value="">Tất cả địa điểm</option>
+                                <option value="hanoi">Hà Nội</option>
+                                <option value="hochiminh">TP. Hồ Chí Minh</option>
+                                <option value="danang">Đà Nẵng</option>
+                                <option value="binhduong">Bình Dương</option>
+                                <option value="dongnai">Đồng Nai</option>
+                                <option value="bacninh">Bắc Ninh</option>
+                                <option value="haiphong">Hải Phòng</option>
+                            </select>
+                            <label for="location">Địa điểm</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-floating">
+                            <select class="form-select" id="category">
+                                <option value="">Tất cả ngành nghề</option>
+                                <option value="manufacturing">Sản xuất</option>
+                                <option value="electronics">Điện tử</option>
+                                <option value="it">Công nghệ thông tin</option>
+                                <option value="engineering">Kỹ thuật</option>
+                                <option value="retail">Bán lẻ</option>
+                                <option value="construction">Xây dựng</option>
+                                <option value="services">Dịch vụ</option>
+                            </select>
+                            <label for="category">Ngành nghề</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="submit" class="btn btn-primary h-100 w-100">
+                            <i class="fas fa-search me-2"></i> Tìm kiếm
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Jobs Listing -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Filters Sidebar -->
+                <div class="col-lg-3">
+                    <div class="filter-card">
+                        <h5>Cấp bậc</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="level-entry">
+                            <label class="form-check-label" for="level-entry">
+                                Nhân viên
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="level-junior">
+                            <label class="form-check-label" for="level-junior">
+                                Chuyên viên
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="level-senior">
+                            <label class="form-check-label" for="level-senior">
+                                Chuyên viên cao cấp
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="level-manager">
+                            <label class="form-check-label" for="level-manager">
+                                Quản lý
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="level-director">
+                            <label class="form-check-label" for="level-director">
+                                Giám đốc
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-card">
+                        <h5>Loại hình công việc</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="type-fulltime">
+                            <label class="form-check-label" for="type-fulltime">
+                                Toàn thời gian
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="type-parttime">
+                            <label class="form-check-label" for="type-parttime">
+                                Bán thời gian
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="type-contract">
+                            <label class="form-check-label" for="type-contract">
+                                Hợp đồng
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="type-temporary">
+                            <label class="form-check-label" for="type-temporary">
+                                Tạm thời
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-card">
+                        <h5>Kinh nghiệm</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="exp-none">
+                            <label class="form-check-label" for="exp-none">
+                                Không yêu cầu
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="exp-1">
+                            <label class="form-check-label" for="exp-1">
+                                Dưới 1 năm
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="exp-1-3">
+                            <label class="form-check-label" for="exp-1-3">
+                                1 - 3 năm
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="exp-3-5">
+                            <label class="form-check-label" for="exp-3-5">
+                                3 - 5 năm
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="exp-5-plus">
+                            <label class="form-check-label" for="exp-5-plus">
+                                Trên 5 năm
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-card">
+                        <h5>Mức lương</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="salary-negotiable">
+                            <label class="form-check-label" for="salary-negotiable">
+                                Thỏa thuận
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="salary-under-10">
+                            <label class="form-check-label" for="salary-under-10">
+                                Dưới 10 triệu
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="salary-10-20">
+                            <label class="form-check-label" for="salary-10-20">
+                                10 - 20 triệu
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="salary-20-30">
+                            <label class="form-check-label" for="salary-20-30">
+                                20 - 30 triệu
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="salary-30-plus">
+                            <label class="form-check-label" for="salary-30-plus">
+                                Trên 30 triệu
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jobs List -->
+                <div class="col-lg-9">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <p class="mb-0">Hiển thị <strong>1-10</strong> trong số <strong>56</strong> việc làm</p>
+                        <div class="d-flex align-items-center">
+                            <label class="me-2">Sắp xếp theo:</label>
+                            <select class="form-select form-select-sm" style="width: auto;">
+                                <option value="relevance">Độ phù hợp</option>
+                                <option value="date">Mới nhất</option>
+                                <option value="salary-high">Lương cao nhất</option>
+                                <option value="salary-low">Lương thấp nhất</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Job Item -->
+                    <div class="job-card">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h5 class="job-title">Kỹ sư Điện tử</h5>
+                                <p class="company-name">ABC Electronics Vietnam</p>
+                                <div class="job-meta">
+                                    <p class="mb-2"><i class="fas fa-map-marker-alt"></i> Bắc Ninh</p>
+                                    <p class="mb-2"><i class="fas fa-money-bill-wave"></i> 20 - 25 triệu</p>
+                                    <p class="mb-0"><i class="fas fa-briefcase"></i> Toàn thời gian</p>
+                                </div>
+                                <div class="job-tags">
+                                    <span class="badge">Điện tử</span>
+                                    <span class="badge">Kỹ thuật</span>
+                                    <span class="badge">Sản xuất</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="/assets/company-logo-1.png" alt="ABC Electronics" class="img-fluid mb-3">
+                                <p class="text-muted small mb-0">Đăng 2 ngày trước</p>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="/job/1" class="btn btn-outline-primary">Xem chi tiết</a>
+                            <a href="/candidate-form?job_id=1" class="btn btn-primary">Ứng tuyển ngay</a>
+                        </div>
+                    </div>
+
+                    <!-- Job Item -->
+                    <div class="job-card">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h5 class="job-title">Quản lý Sản xuất</h5>
+                                <p class="company-name">XYZ Manufacturing Co., Ltd</p>
+                                <div class="job-meta">
+                                    <p class="mb-2"><i class="fas fa-map-marker-alt"></i> Bình Dương</p>
+                                    <p class="mb-2"><i class="fas fa-money-bill-wave"></i> 30 - 35 triệu</p>
+                                    <p class="mb-0"><i class="fas fa-briefcase"></i> Toàn thời gian</p>
+                                </div>
+                                <div class="job-tags">
+                                    <span class="badge">Sản xuất</span>
+                                    <span class="badge">Quản lý</span>
+                                    <span class="badge">Cấp cao</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="/assets/company-logo-2.png" alt="XYZ Manufacturing" class="img-fluid mb-3">
+                                <p class="text-muted small mb-0">Đăng 1 tuần trước</p>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="/job/2" class="btn btn-outline-primary">Xem chi tiết</a>
+                            <a href="/candidate-form?job_id=2" class="btn btn-primary">Ứng tuyển ngay</a>
+                        </div>
+                    </div>
+
+                    <!-- Job Item -->
+                    <div class="job-card">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h5 class="job-title">Kỹ thuật viên Bảo trì</h5>
+                                <p class="company-name">DEF Industries Vietnam</p>
+                                <div class="job-meta">
+                                    <p class="mb-2"><i class="fas fa-map-marker-alt"></i> Hà Nội</p>
+                                    <p class="mb-2"><i class="fas fa-money-bill-wave"></i> 15 - 18 triệu</p>
+                                    <p class="mb-0"><i class="fas fa-briefcase"></i> Toàn thời gian</p>
+                                </div>
+                                <div class="job-tags">
+                                    <span class="badge">Kỹ thuật</span>
+                                    <span class="badge">Bảo trì</span>
+                                    <span class="badge">Sản xuất</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="/assets/company-logo-3.png" alt="DEF Industries" class="img-fluid mb-3">
+                                <p class="text-muted small mb-0">Đăng hôm nay</p>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="/job/3" class="btn btn-outline-primary">Xem chi tiết</a>
+                            <a href="/candidate-form?job_id=3" class="btn btn-primary">Ứng tuyển ngay</a>
+                        </div>
+                    </div>
+
+                    <!-- Job Item -->
+                    <div class="job-card">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h5 class="job-title">Chuyên viên Nhân sự</h5>
+                                <p class="company-name">GHI Technology Co., Ltd</p>
+                                <div class="job-meta">
+                                    <p class="mb-2"><i class="fas fa-map-marker-alt"></i> TP. Hồ Chí Minh</p>
+                                    <p class="mb-2"><i class="fas fa-money-bill-wave"></i> 18 - 22 triệu</p>
+                                    <p class="mb-0"><i class="fas fa-briefcase"></i> Toàn thời gian</p>
+                                </div>
+                                <div class="job-tags">
+                                    <span class="badge">Nhân sự</span>
+                                    <span class="badge">Tuyển dụng</span>
+                                    <span class="badge">Hành chính</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="/assets/company-logo-4.png" alt="GHI Technology" class="img-fluid mb-3">
+                                <p class="text-muted small mb-0">Đăng 3 ngày trước</p>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="/job/4" class="btn btn-outline-primary">Xem chi tiết</a>
+                            <a href="/candidate-form?job_id=4" class="btn btn-primary">Ứng tuyển ngay</a>
+                        </div>
+                    </div>
+
+                    <!-- Job Item -->
+                    <div class="job-card">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h5 class="job-title">Kỹ sư Phần mềm</h5>
+                                <p class="company-name">JKL Software Vietnam</p>
+                                <div class="job-meta">
+                                    <p class="mb-2"><i class="fas fa-map-marker-alt"></i> Đà Nẵng</p>
+                                    <p class="mb-2"><i class="fas fa-money-bill-wave"></i> 25 - 30 triệu</p>
+                                    <p class="mb-0"><i class="fas fa-briefcase"></i> Toàn thời gian</p>
+                                </div>
+                                <div class="job-tags">
+                                    <span class="badge">IT</span>
+                                    <span class="badge">Phần mềm</span>
+                                    <span class="badge">Lập trình</span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <img src="/assets/company-logo-5.png" alt="JKL Software" class="img-fluid mb-3">
+                                <p class="text-muted small mb-0">Đăng 5 ngày trước</p>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="/job/5" class="btn btn-outline-primary">Xem chi tiết</a>
+                            <a href="/candidate-form?job_id=5" class="btn btn-primary">Ứng tuyển ngay</a>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation" class="mt-4">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Tiếp</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="/assets/mps-logo-white.png" alt="MPS Logo" class="mb-4" style="height: 40px;">
+                    <p>MPS HR Consulting cung cấp giải pháp nhân sự toàn diện cho doanh nghiệp FDI tại Việt Nam, giúp doanh nghiệp tìm kiếm và phát triển đội ngũ nhân tài phù hợp.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Liên kết</h5>
+                        <ul>
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/about">Về chúng tôi</a></li>
+                            <li><a href="/services">Dịch vụ</a></li>
+                            <li><a href="/jobs">Việc làm</a></li>
+                            <li><a href="/contact">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Dịch vụ</h5>
+                        <ul>
+                            <li><a href="/services#executive">Tuyển dụng cấp cao</a></li>
+                            <li><a href="/services#general">Tuyển dụng lao động phổ thông</a></li>
+                            <li><a href="/services#outsourcing">Tuyển dụng thuê ngoài</a></li>
+                            <li><a href="/services#legal">Tư vấn luật lao động</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="footer-links">
+                        <h5>Liên hệ</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> 123 Đường ABC, Quận 1, TP.HCM</li>
+                            <li><i class="fas fa-phone me-2"></i> (028) 1234 5678</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@mps.net.vn</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>&copy; 2025 MPS HR Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Job search functionality
+        document.getElementById('job-search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const keyword = document.getElementById('keyword').value;
+            const location = document.getElementById('location').value;
+            const category = document.getElementById('category').value;
+            
+            // In a real implementation, this would trigger an AJAX request to search jobs
+            console.log('Searching for:', { keyword, location, category });
+            
+            // For demo purposes, just show an alert
+            alert(`Tìm kiếm việc làm với từ khóa: ${keyword || 'Không có'}, Địa điểm: ${location || 'Tất cả'}, Ngành nghề: ${category || 'Tất cả'}`);
+        });
+        
+        // Filter functionality
+        const filterCheckboxes = document.querySelectorAll('.filter-card input[type="checkbox"]');
+        filterCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                // In a real implementation, this would trigger an AJAX request to filter jobs
+                console.log('Filter changed:', this.id, this.checked);
+                
+                // For demo purposes, just log the active filters
+                const activeFilters = Array.from(filterCheckboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.id);
+                
+                console.log('Active filters:', activeFilters);
+            });
+        });
+    </script>
+</body>
+</html>

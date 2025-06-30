@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPS HR Consulting - Giải pháp Nhân sự Toàn diện</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #ff6b00;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand img {
+            height: 40px;
+        }
+        
+        .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.9)), url('/assets/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial {
+            background-color: var(--light-color);
+            padding: 80px 0;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .stats {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .stat-item h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(rgba(255, 107, 0, 0.9), rgba(255, 107, 0, 0.8)), url('/assets/cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-links h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/assets/mps-logo.png" alt="MPS Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Về chúng tôi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/services">Dịch vụ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/jobs">Việc làm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-3" href="/admin">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Giải pháp Nhân sự Toàn diện cho Doanh nghiệp FDI</h1>
+                    <p>MPS cung cấp dịch vụ tư vấn nhân sự chuyên nghiệp, giúp doanh nghiệp FDI tại Việt Nam tìm kiếm và phát triển đội ngũ nhân tài phù hợp.</p>
+                    <div class="d-flex">
+                        <a href="/jobs" class="btn btn-light me-3">Tìm việc làm</a>
+                        <a href="/contact" class="btn btn-secondary">Liên hệ tư vấn</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="/assets/hero-image.png" alt="MPS HR Consulting" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Dịch vụ của chúng tôi</h2>
+                <p class="text-muted">Giải pháp nhân sự toàn diện cho mọi nhu cầu của doanh nghiệp</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h5 class="card-title">Tuyển dụng cấp cao</h5>
+                            <p class="card-text">Tìm kiếm và đánh giá nhân tài cấp quản lý và chuyên gia cho doanh nghiệp của bạn.</p>
+                            <a href="/services#executive" class="btn btn-outline-primary">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h5 class="card-title">Tuyển dụng lao động phổ thông</h5>
+                            <p class="card-text">Cung cấp nguồn lao động phổ thông chất lượng, ổn định cho các doanh nghiệp sản xuất.</p>
+                            <a href="/services#general" class="btn btn-outline-primary">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h5 class="card-title">Tuyển dụng thuê ngoài</h5>
+                            <p class="card-text">Giải pháp tuyển dụng toàn diện, tiết kiệm chi phí và thời gian cho doanh nghiệp.</p>
+                            <a href="/services#outsourcing" class="btn btn-outline-primary">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card service-card">
+                        <div class="card-body text-center p-4">
+                            <div class="service-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h5 class="card-title">Tư vấn luật lao động</h5>
+                            <p class="card-text">Hỗ trợ doanh nghiệp FDI hiểu và tuân thủ luật lao động Việt Nam hiệu quả.</p>
+                            <a href="/services#legal" class="btn btn-outline-primary">Tìm hiểu thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="/assets/why-choose-us.jpg" alt="Why Choose MPS" class="img-fluid rounded">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Tại sao chọn MPS?</h2>
+                    <div class="d-flex mb-4">
+                        <div class="me-3 text-primary">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Bộ công cụ đánh giá tích hợp</h5>
+                            <p>Sử dụng nhiều phương pháp đánh giá nhân tài (DISC, Uchida, Motivator) được tinh chỉnh theo từng ngành nghề.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="me-3 text-primary">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Phân tích thị trường lao động</h5>
+                            <p>Cung cấp báo cáo phân tích thị trường lao động với dữ liệu cập nhật mới nhất hỗ trợ ra quyết định.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="me-3 text-primary">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Đội ngũ chuyên gia giàu kinh nghiệm</h5>
+                            <p>Đội ngũ tư vấn có kinh nghiệm thực tế trong lĩnh vực sản xuất, dịch vụ, bán lẻ và xây dựng.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="me-3 text-primary">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div>
+                            <h5>Giải pháp cá nhân hóa</h5>
+                            <p>Mỗi doanh nghiệp đều có nhu cầu riêng biệt, chúng tôi cung cấp giải pháp phù hợp với từng khách hàng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <h2>500+</h2>
+                        <p>Doanh nghiệp FDI</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <h2>5,000+</h2>
+                        <p>Vị trí đã tuyển</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <h2>95%</h2>
+                        <p>Tỷ lệ hài lòng</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <h2>10+</h2>
+                        <p>Năm kinh nghiệm</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Khách hàng nói gì về chúng tôi</h2>
+                <p class="text-muted">Những đánh giá từ khách hàng đã sử dụng dịch vụ của MPS</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="/assets/client-1.jpg" alt="Client">
+                            <div>
+                                <h5 class="mb-0">Nguyễn Văn A</h5>
+                                <p class="text-muted mb-0">Giám đốc Nhân sự, ABC Electronics</p>
+                            </div>
+                        </div>
+                        <p>"MPS đã giúp chúng tôi tìm được những ứng viên chất lượng cao cho các vị trí quản lý cấp trung. Đội ngũ tư vấn chuyên nghiệp và hiểu rõ nhu cầu của doanh nghiệp FDI."</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="/assets/client-2.jpg" alt="Client">
+                            <div>
+                                <h5 class="mb-0">Trần Thị B</h5>
+                                <p class="text-muted mb-0">Trưởng phòng Nhân sự, XYZ Manufacturing</p>
+                            </div>
+                        </div>
+                        <p>"Dịch vụ tuyển dụng lao động phổ thông của MPS giúp chúng tôi tiết kiệm thời gian và chi phí đáng kể. Đặc biệt ấn tượng với quy trình sàng lọc và đánh giá ứng viên chuyên nghiệp."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Sẵn sàng nâng cao hiệu quả tuyển dụng?</h2>
+            <p class="mb-4">Liên hệ với chúng tôi ngay hôm nay để được tư vấn giải pháp nhân sự phù hợp với doanh nghiệp của bạn.</p>
+            <a href="/contact" class="btn btn-light btn-lg">Liên hệ ngay</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="/assets/mps-logo-white.png" alt="MPS Logo" class="mb-4" style="height: 40px;">
+                    <p>MPS HR Consulting cung cấp giải pháp nhân sự toàn diện cho doanh nghiệp FDI tại Việt Nam, giúp doanh nghiệp tìm kiếm và phát triển đội ngũ nhân tài phù hợp.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Liên kết</h5>
+                        <ul>
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/about">Về chúng tôi</a></li>
+                            <li><a href="/services">Dịch vụ</a></li>
+                            <li><a href="/jobs">Việc làm</a></li>
+                            <li><a href="/contact">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Dịch vụ</h5>
+                        <ul>
+                            <li><a href="/services#executive">Tuyển dụng cấp cao</a></li>
+                            <li><a href="/services#general">Tuyển dụng lao động phổ thông</a></li>
+                            <li><a href="/services#outsourcing">Tuyển dụng thuê ngoài</a></li>
+                            <li><a href="/services#legal">Tư vấn luật lao động</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="footer-links">
+                        <h5>Liên hệ</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> 123 Đường ABC, Quận 1, TP.HCM</li>
+                            <li><i class="fas fa-phone me-2"></i> (028) 1234 5678</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@mps.net.vn</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>&copy; 2025 MPS HR Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
